@@ -16,7 +16,7 @@ class Multi(Resource):
                 return{'result': num*10}
 
 api.add_resource(HelloWorld, '/')
-api.add_resource(Multi, '/multi/<int:num>')
+api.add_resource(Multi, '/multiple/<int:num>')
 
 if __name__ == '__main__':
         app.run(host='0.0.0.0', port=80, debug=True)
