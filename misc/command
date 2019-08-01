@@ -1,0 +1,11 @@
+kubectl create configmap pyappconfigmap --from-file=./pythonapp.py -n default
+kubectl create -f deploy-pyapp.yaml -n default
+kubectl create -f service.yml -n defaul
+
+
+docker build -t pyapp .
+docker tag pyapp tjkloud9/pyapp
+docker push tjkloud9/pyapp
+
+~                                                                                                                                                                                                           
+~                              

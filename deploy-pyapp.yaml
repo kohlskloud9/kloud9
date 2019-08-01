@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pyapp-deployment
+  namespace: "default"
+  labels:
+    app: pyapp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pyapp
+    spec:
+      containers:
+      - name: pyapp-container
+        image: tjkloud9/pyapp
+        ports:
+        - name: app-port
+          containerPort: 80
+        command: ["/usr/bin/python"]
+        args: ["/myapp/pythonapp.py"]
+        volumeMounts:
+        - name: config-volume
+          mountPath: /myapp
+      volumes:
+      - name: config-volume
+        configMap:
+          name: pyappconfigmap
+          items:
+          - key: pythonapp.py
+            path: pythonapp.py
