@@ -12,4 +12,3 @@ RUN mkdir /myapp
 #CMD python pythonapp.py
 #EXPOSE 80
 CMD ping 127.0.0.1
-RUN ping 127.0.0.1
